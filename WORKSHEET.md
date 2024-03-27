@@ -28,7 +28,7 @@ Feel free to ask your NMEP friends if you don't know!
 
 ## -1.0 What is the difference between `torch.nn.Module` and `torch.nn.functional`?
 
-`YOUR ANSWER HERE`
+`torch.nn.Module and torch.nn.functional are both methods to implement a neural network. torch.nn.Module (module) allows for more customizability in terms of managing state and parameters whereas torch.nn.functional (functional) doesn't. Additionally, module is a more object oriented approach requiring an __init__ method where layers are defined and forward method which specifies how layers and input data interact. Furthermore, functional has a lot of prewritten functions (activation functions, etc).`
 
 ## -1.1 What is the difference between a Dataset and a DataLoader?
 
