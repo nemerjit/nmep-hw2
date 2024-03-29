@@ -45,20 +45,19 @@ Feel free to ask your NMEP friends if you don't know!
 Read through `README.md` and follow the steps to understand how the repo is structured.
 
 ## 0.0 What are the `build.py` files? Why do we have them?**
-
-`YOUR ANSWER HERE`
+The build.py files (models/build.py and data/build.py) instantiate models and data loaders based on the specific configurations provided. These exist to abstract the process of creating instances of models/data loaders, so that specific implementation details aren’t needed. 
 
 ## 0.1 Where would you define a new model?
 
-`YOUR ANSWER HERE`
+You'd define a new model in models/build.py. 
 
 ## 0.2 How would you add support for a new dataset? What files would you need to change?
 
-`YOUR ANSWER HERE`
+To add support for a new dataset, you’d need to modify the data/build.py and data/datasets files. In data/build.py, you’d need to edit the build_loader function by creating an additional if statement (ex. if config.DATA.DATASET == ‘new_dataset’). Within that if statement, set the dataset_train, dataset_test, and dataset_val variables appropriately. You’d also need to create a new class for the dataset in data/dataset.py. 
 
 ## 0.3 Where is the actual training code?
 
-`YOUR ANSWER HERE`
+The training code is located in main.py.
 
 ## 0.4 Create a diagram explaining the structure of `main.py` and the entire code repo.
 
@@ -139,15 +138,14 @@ The following questions relate to `models/build.py` and `models/models.py`.
 
 ## What models are implemented for you?
 
-`YOUR ANSWER HERE`
+The LeNet and ResNet18 models have been implemented for us. 
 
 ## What do PyTorch models inherit from? What functions do we need to implement for a PyTorch Model? (hint there are 2)
 
-`YOUR ANSWER HERE`
+PyTorch models inherit from the torch.nn.Module class. The functions needed to implement PyTorch models are: __init__() and forward(). 
 
 ## How many layers does our implementation of LeNet have? How many parameters does it have? (hint: to count the number of parameters, you might want to run the code)
-
-`YOUR ANSWER HERE`
+Our implementation of LeNet has 11 layers (6 feature extracting layers, and 5 classifier layers). 
 
 
 
