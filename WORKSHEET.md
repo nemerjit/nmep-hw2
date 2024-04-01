@@ -75,53 +75,53 @@ The following questions relate to `data/build.py` and `data/datasets.py`.
 
 ### 1.0.0 What does `build_loader` do?
 
-`YOUR ANSWER HERE`
+`build_loader creates datasets and then dataloaders for either the CIFAR 10 or imagenet datasets.`
 
 ### 1.0.1 What functions do you need to implement for a PyTorch Datset? (hint there are 3)
 
-`YOUR ANSWER HERE`
+`__init__, __len__, __get_item__ are the functions that you need to implement for a Pytorch Dataset.`
 
 ## 1.1 CIFAR10Dataset
 
 ### 1.1.0 Go through the constructor. What field actually contains the data? Do we need to download it ahead of time?
 
-`YOUR ANSWER HERE`
+`self.dataset contains the data. We don't need to download it ahead of time (download=true; if not downloaded, download it now).`
 
 ### 1.1.1 What is `self.train`? What is `self.transform`?
 
-`YOUR ANSWER HERE`
+`self.train is tells us whether the dataset is meant for training or not training. self.transform seems to be transforming/pre-processing the data to our liking for our purposes (color jitter, etc).`
 
 ### 1.1.2 What does `__getitem__` do? What is `index`?
 
-`YOUR ANSWER HERE`
+`index is a specific datapoint in the dataset. __getitem__ obtains a datapoint from the dataset, obtains the transformation of the image at that index, and returns that image and its label (the entire datapoint with the transformed image).`
 
 ### 1.1.3 What does `__len__` do?
 
-`YOUR ANSWER HERE`
+`__len__ returns the number of datapoints within the dataset.`
 
 ### 1.1.4 What does `self._get_transforms` do? Why is there an if statement?
 
-`YOUR ANSWER HERE`
+`self.__get_transforms transforms/pre-processes the data. There is an if statement because the pre-processing done on the images should be different for data that is to be trained on and data that the model is validated on.`
 
 ### 1.1.5 What does `transforms.Normalize` do? What do the parameters mean? (hint: take a look here: https://pytorch.org/vision/main/generated/torchvision.transforms.Normalize.html)
 
-`YOUR ANSWER HERE`
+`transforms.Normalize normalizes the image among several channels. In this case, we have normalized the means across the RGB channels. This can be used to transform the color of the images.`
 
 ## 1.2 MediumImagenetHDF5Dataset
 
 ### 1.2.0 Go through the constructor. What field actually contains the data? Where is the data actually stored on honeydew? What other files are stored in that folder on honeydew? How large are they?
 
-`YOUR ANSWER HERE`
+`The self.file field contains the data. I think this data is stored in the root directory of honeydew in the data folder. Other files stored in the folder are other datasets used by project teams, etc. Files in the folder are massive. Most are 100K+ and the largest are just over 1M.`
 
 > *Some background*: HDF5 is a file format that stores data in a hierarchical structure. It is similar to a python dictionary. The files are binary and are generally really efficient to use. Additionally, `h5py.File()` does not actually read the entire file contents into memory. Instead, it only reads the data when you access it (as in `__getitem__`). You can learn more about [hdf5 here](https://portal.hdfgroup.org/display/HDF5/HDF5) and [h5py here](https://www.h5py.org/).
 
 ### 1.2.1 How is `_get_transforms` different from the one in CIFAR10Dataset?
 
-`YOUR ANSWER HERE`
+`__get_transforms is different in this function as this dataset doesn't include colorjitter and random horizontal fit, normalize includes normalization in the standard deviation of values, and if the dataset is used for training, we add on additional pre-processing steps rather than having a different set of transformations.`
 
 ### 1.2.2 How is `__getitem__` different from the one in CIFAR10Dataset? How many data splits do we have now? Is it different from CIFAR10? Do we have labels/annotations for the test set?
 
-`YOUR ANSWER HERE`
+`__getitem__ modifies the label based on whether the data is the test split or not. If it is in the test split, the label is overwritten and replaced with -1 while if it is not in the test split, the original value is retained in the label value.`
 
 ### 1.2.3 Visualizing the dataset
 
