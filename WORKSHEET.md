@@ -32,11 +32,11 @@ Feel free to ask your NMEP friends if you don't know!
 
 ## -1.1 What is the difference between a Dataset and a DataLoader?
 
-`YOUR ANSWER HERE`
+`Datasets are ways to create datasets in Pytorch to access individual points. Dataloaders wrap datasets to allow for batching, loading, and shuffling the data. Dataloaders help train models on data.`
 
 ## -1.2 What does `@torch.no_grad()` above a function header do?
 
-`YOUR ANSWER HERE`
+`@torch.no_grad() prevents a function from tracking gradient computations. This reduces space and time complexity as now you aren't storing or using gradients.`
 
 
 
