@@ -1,4 +1,3 @@
-BASE: ['alexnet_base.yaml']
 AUG:
   COLOR_JITTER: 0.4
 DATA:
