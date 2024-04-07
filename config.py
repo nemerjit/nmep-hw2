@@ -44,7 +44,7 @@ base_config.MODEL.NAME = " "
 # Checkpoint to resume, could be overwritten by command line argument
 base_config.MODEL.RESUME = ""
 # Number of classes, overwritten in data preparation
-base_config.MODEL.NUM_CLASSES = 10
+base_config.MODEL.NUM_CLASSES = 1000
 # Dropout rate
 base_config.MODEL.DROP_RATE = 0.0
 
