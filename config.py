@@ -165,8 +165,7 @@ def update_config(config, args):
 def get_config(args):
     """Get a yacs CfgNode object with default values."""
     # Return a clone so that the defaults will not be altered
-    # This is for the "local variable" use pattern
-    print("Loading YAML file:", args.cfg) 
+    # This is for the "local variable" use pattern 
     config = base_config.clone()
     update_config(config, args)
 
