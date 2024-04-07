@@ -17,6 +17,7 @@ from fvcore.nn import FlopCountAnalysis, flop_count_str
 from config import get_config
 from data import build_loader
 from models import build_model
+from models.alexnet import AlexNet
 from optimizer import build_optimizer
 from utils import create_logger, load_checkpoint, save_checkpoint
 
