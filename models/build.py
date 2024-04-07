@@ -20,8 +20,8 @@ def build_model(config):
     #     model = ResNet101(num_classes=config.MODEL.NUM_CLASSES)
     # elif model_type == 'resnet152':
     #     model = ResNet152(num_classes=config.MODEL.NUM_CLASSES)
-      elif model_type == 'alexnet':  
-          model = AlexNet(num_classes=config.MODEL.NUM_CLASSES)  
+    elif model_type =='alexnet':  
+        model = AlexNet(num_classes=config.MODEL.NUM_CLASSES)  
     else:
         raise NotImplementedError(f"Unknown model: {model_type}")
     
