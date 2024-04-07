@@ -40,11 +40,11 @@ base_config.DATA.NUM_WORKERS = 8
 # -----------------------------------------------------------------------------
 base_config.MODEL = CN()
 # Model NAME
-base_config.MODEL.NAME = "swin"
+base_config.MODEL.NAME = "alexnet"
 # Checkpoint to resume, could be overwritten by command line argument
 base_config.MODEL.RESUME = ""
 # Number of classes, overwritten in data preparation
-base_config.MODEL.NUM_CLASSES = 1000
+base_config.MODEL.NUM_CLASSES = 10
 # Dropout rate
 base_config.MODEL.DROP_RATE = 0.0
 
