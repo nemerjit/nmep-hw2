@@ -23,7 +23,7 @@ base_config.DATA = CN()
 # Batch size for a single GPU, could be overwritten by command line argument
 base_config.DATA.BATCH_SIZE = 128
 # Path to dataset, could be overwritten by command line argument
-base_config.DATA.DATA_PATH = "./data/"
+base_config.DATA.DATA_PATH = " "
 # Dataset name
 base_config.DATA.DATASET = "cifar"
 # Input image size
