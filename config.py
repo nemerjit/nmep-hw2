@@ -119,6 +119,8 @@ def _update_config_from_file(config, cfg_file):
     config.defrost()
     with open(cfg_file, "r") as f:
         yaml_cfg = yaml.load(f, Loader=yaml.FullLoader)
+        print("Parsed YAML content:")
+        print(yaml_cfg) 
 
     # Use the config in BASE as the default
     for base_cfg in yaml_cfg.setdefault("BASE", [""]):
