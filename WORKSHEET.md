@@ -49,7 +49,7 @@ The build.py files (models/build.py and data/build.py) instantiate models and da
 
 ## 0.1 Where would you define a new model?
 
-You'd define a new model in models/build.py. 
+You'd define a new model in models, by creating a new .py file.  
 
 ## 0.2 How would you add support for a new dataset? What files would you need to change?
 
