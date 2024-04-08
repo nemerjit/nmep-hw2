@@ -102,7 +102,7 @@ class CIFAR10Dataset(Dataset):
         self.img_size = img_size
 
         self.transform = self._get_transforms()
-        self.dataset = CIFAR10(root="/data/cifar10", train=self.train, download=True)
+        self.dataset = CIFAR10(root="./data/cifar10", train=self.train, download=True)
 
     def __getitem__(self, index):
         image, label = self.dataset[index]
