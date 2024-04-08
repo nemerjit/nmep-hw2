@@ -4,7 +4,7 @@ DATA:
   BATCH_SIZE: 256
   DATASET: "cifar10"
   IMG_SIZE: 70
-  NUM_WORKERS: 8
+  NUM_WORKERS: 32
   PIN_MEMORY: True
 MODEL:
   NAME: alexnet
