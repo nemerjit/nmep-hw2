@@ -132,8 +132,10 @@ def train_one_epoch(config, model, criterion, data_loader, optimizer, epoch):
     start = time.time()
     end = time.time()
     for idx, (samples, targets) in enumerate(tqdm(data_loader, leave=False)):
-        samples = samples.cuda(non_blocking=True)
-        targets = targets.cuda(non_blocking=True)
+        #samples = samples.cuda(non_blocking=True)
+        samples = samples
+        #targets = targets.cuda(non_blocking=True)
+        targets = targets
 
         optimizer.zero_grad()
         outputs = model(samples)
@@ -174,8 +176,10 @@ def validate(config, data_loader, model):
 
     end = time.time()
     for idx, (images, target) in enumerate(data_loader):
-        images = images.cuda(non_blocking=True)
-        target = target.cuda(non_blocking=True)
+        #images = images.cuda(non_blocking=True)
+        images = images
+        #target = target.cuda(non_blocking=True)
+        target = target
 
         # compute output
         output = model(images)
@@ -207,7 +211,8 @@ def evaluate(config, data_loader, model):
     model.eval()
     preds = []
     for idx, (images, _) in enumerate(tqdm(data_loader)):
-        images = images.cuda(non_blocking=True)
+        #images = images.cuda(non_blocking=True)
+        images = images
         output = model(images)
         preds.append(output.cpu().numpy())
     preds = np.concatenate(preds)
@@ -219,7 +224,7 @@ if __name__ == "__main__":
 
     seed = config.SEED
     torch.manual_seed(seed)
-    torch.cuda.manual_seed(seed)
+    #torch.cuda.manual_seed(seed)
     np.random.seed(seed)
     # random.seed(seed)
 
