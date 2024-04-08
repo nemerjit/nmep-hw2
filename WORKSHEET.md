@@ -204,7 +204,39 @@ Report training and validation accuracy on AlexNet and LeNet. Report hyperparame
 > You can just copy the config file, don't need to write it all out again.
 > Also no need to tune the models much, you'll do it in the next part.
 
-`YOUR ANSWER HERE`
+The max accuracy was about 77.48% validation with AlexNet. 
+Hyperparamters: 
+AUG:
+  COLOR_JITTER: 0.4
+DATA:
+  BATCH_SIZE: 256
+  DATASET: "cifar10"
+  IMG_SIZE: 70
+  NUM_WORKERS: 32
+  PIN_MEMORY: True
+MODEL:
+  NAME: alexnet
+  NUM_CLASSES: 10
+  DROP_RATE: 0.5
+TRAIN:
+  EPOCHS: 50
+  WARMUP_EPOCHS: 10
+  LR: 3e-4
+  MIN_LR: 3e-5
+  WARMUP_LR: 3e-5
+  LR_SCHEDULER:
+    NAME: "cosine"
+  OPTIMIZER:
+    NAME: "adamw"
+    EPS: 1e-8
+    BETAS: (0.9, 0.999)
+    MOMENTUM: 0.9
+OUTPUT: "output/alexnet_base.yaml"
+SAVE_FREQ: 1
+PRINT_FREQ: 500
+SAVE_FREQ: 5
+PRINT_FREQ: 99999
+
 
 
 
