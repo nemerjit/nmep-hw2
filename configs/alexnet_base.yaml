@@ -23,7 +23,9 @@ TRAIN:
     EPS: 1e-8
     BETAS: (0.9, 0.999)
     MOMENTUM: 0.9
-OUTPUT: "output/configs/alexnet_output_dir"
+OUTPUT: "output/alexnet_base.yaml"
+SAVE_FREQ: 1
+PRINT_FREQ: 500
 SAVE_FREQ: 5
 PRINT_FREQ: 99999
 PRINT_FREQ: 99999
