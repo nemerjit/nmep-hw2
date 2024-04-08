@@ -52,7 +52,7 @@ def main(config):
         config
     )
 
-    device = ("cuda" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = build_model(config)
     # logger.info(str(model))
 
