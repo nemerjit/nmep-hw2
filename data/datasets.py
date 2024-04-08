@@ -97,7 +97,7 @@ class MediumImagenetHDF5Dataset(Dataset):
 
 
 class CIFAR10Dataset(Dataset):
-    def __init__(self, img_size=32, train=True):
+    def __init__(self, img_size=70, train=True):
         self.train = train
         self.img_size = img_size
 
