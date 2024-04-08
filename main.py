@@ -151,7 +151,8 @@ def train_one_epoch(config, model, criterion, data_loader, optimizer, epoch):
         end = time.time()
 
     lr = optimizer.param_groups[0]["lr"]
-    memory_used = torch.cuda.max_memory_allocated() / (1024.0 * 1024.0)
+    #memory_used = torch.cuda.max_memory_allocated() / (1024.0 * 1024.0)
+    memory_used = psutil.virtual_memory().used / (1024.0 * 1024.0)
     logger.info(
         f"Train: [{epoch}/{config.TRAIN.EPOCHS}]\t"
         f"lr {lr:.6f}\t"
@@ -195,7 +196,8 @@ def validate(config, data_loader, model):
         batch_time.update(time.time() - end)
         end = time.time()
 
-    memory_used = torch.cuda.max_memory_allocated() / (1024.0 * 1024.0)
+    # memory_used = torch.cuda.max_memory_allocated() / (1024.0 * 1024.0)
+    memory_used = psutil.virtual_memory().used / (1024.0 * 1024.0)
     logger.info(
         f"Validate: \t"
         f"Time {batch_time.val:.3f} ({batch_time.avg:.3f})\t"
