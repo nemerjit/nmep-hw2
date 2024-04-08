@@ -195,7 +195,7 @@ Linear with num_classes output units
 ## 4.1 How many parameters does AlexNet have? How does it compare to LeNet? With the same batch size, how much memory do LeNet and AlexNet take up while training? 
 > (hint: use `gpuststat`)
 
-`YOUR ANSWER HERE`
+57 parameters. 
 
 ## 4.2 Train AlexNet on CIFAR10. What accuracy do you get?
 
