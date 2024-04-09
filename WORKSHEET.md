@@ -63,7 +63,7 @@ The training code is located in main.py.
 
 Be sure to include the 4 main functions in it (`main`, `train_one_epoch`, `validate`, `evaluate`) and how they interact with each other. Also explain where the other files are used. No need to dive too deep into any part of the code for now, the following parts will do deeper dives into each part of the code. For now, read the code just enough to understand how the pieces come together, not necessarily the specifics. You can use any tool to create the diagram (e.g. just explain it in nice markdown, draw it on paper and take a picture, use draw.io, excalidraw, etc.)
 
-`YOUR ANSWER HERE`
+
 
 
 
@@ -159,7 +159,18 @@ The configs file contains the configurations for the models lenet and resnet18. 
 
 ## 3.1 Open `main.py` and go through `main()`. In bullet points, explain what the function does.
 
-`YOUR ANSWER HERE`
+- Sets the device to either CUDA GPU or CPU, CPU if cuda isn’t available.  
+- Initializes a model with the specific configurations given 
+- Transfers model to specific device for computation 
+- Sums the number of parameters and flop counts
+- Initializes an optimizer, criterion, and learning rate scheduler 
+- Loads the saved model parameters, optimizer state, learning rate scheduler state
+- If the model is in evaluation mode, it will return and not engage in training tasks 
+- In each training loop, the model is trained for one epoch on the training data, and the training
+-  accuracy and loss is computed/reported. The training progress is logged. 
+- Checkpoints are periodically saved during the process of training. 
+- Model’s performance is then evaluated on the validation dataset, and validation accuracy is computed and validation loss is reported. 
+
 
 ## 3.2 Go through `validate()` and `evaluate()`. What do they do? How are they different? 
 > Could we have done better by reusing code? Yes. Yes we could have but we didn't... sorry...
