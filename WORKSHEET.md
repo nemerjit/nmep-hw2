@@ -60,9 +60,7 @@ To add support for a new dataset, you’d need to modify the data/build.py and d
 The training code is located in main.py.
 
 ## 0.4 Create a diagram explaining the structure of `main.py` and the entire code repo.
-
-Be sure to include the 4 main functions in it (`main`, `train_one_epoch`, `validate`, `evaluate`) and how they interact with each other. Also explain where the other files are used. No need to dive too deep into any part of the code for now, the following parts will do deeper dives into each part of the code. For now, read the code just enough to understand how the pieces come together, not necessarily the specifics. You can use any tool to create the diagram (e.g. just explain it in nice markdown, draw it on paper and take a picture, use draw.io, excalidraw, etc.)
-
+![Image Alt text](/images/<img width="789" alt="IMG_0133" src="https://github.com/nemerjit/nmep-hw2/assets/110420942/ab4d5fff-45ff-4904-a66b-5986c6416794">)
 
 
 
