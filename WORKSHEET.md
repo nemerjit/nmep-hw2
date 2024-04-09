@@ -204,7 +204,7 @@ Linear with num_classes output units
 ## 4.1 How many parameters does AlexNet have? How does it compare to LeNet? With the same batch size, how much memory do LeNet and AlexNet take up while training? 
 > (hint: use `gpuststat`)
 
-AlexNet has 57.04481 million parameters. 
+AlexNet has 57.04481 million parameters, and the LeNet has around 99.28k paramters. With a batch size of 256, the alexnet will take up around 3099 MB of memory, while the LeNet will take up around 338 MB of memory. The LeNet is much more memory-efficient. 
 
 ## 4.2 Train AlexNet on CIFAR10. What accuracy do you get?
 
