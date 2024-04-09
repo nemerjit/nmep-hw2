@@ -353,24 +353,45 @@ AlexNet has a higher training and validation accuracy with far lower epochs. It 
 
 ## 5.2 For just AlexNet, vary the learning rate by factors of 3ish or 10 (ie if it's 3e-4 also try 1e-4, 1e-3, 3e-3, etc) and plot all the loss plots on the same graph. What do you observe? What is the best learning rate? Try at least 4 different learning rates.
 
-`YOUR ANSWER HERE`
+<img width="1414" alt="Screen Shot 2024-04-09 at 4 44 41 AM" src="https://github.com/nemerjit/nmep-hw2/assets/110488494/ad78e960-e77d-4bdf-9ed4-8600084d061c">
+
+<img width="1422" alt="Screen Shot 2024-04-09 at 4 45 13 AM" src="https://github.com/nemerjit/nmep-hw2/assets/110488494/723cb140-331d-4cfa-8ded-555e58f6761f">
+
+<img width="1434" alt="Screen Shot 2024-04-09 at 4 45 36 AM" src="https://github.com/nemerjit/nmep-hw2/assets/110488494/8a3ce5ab-8054-4523-950c-06ee219c98f0">
+
+These three graphs alongside the one for alexNet above are the three graphs I used to figure out the best learning rate. The first learning rate of 3e-4 performed the best with 1e-4 being a close second in terms of validation loss. I would say, based on the results 3e-4 is the best learning rate.
 
 ## 5.3 Do the same with batch size, keeping learning rate and everything else fixed. Ideally the batch size should be a power of 2, but try some odd batch sizes as well. What do you observe? Record training times and loss/accuracy plots for each batch size (should be easy with W&B). Try at least 4 different batch sizes.
 
 `YOUR ANSWER HERE`
 
+<img width="1429" alt="Screen Shot 2024-04-09 at 4 48 35 AM" src="https://github.com/nemerjit/nmep-hw2/assets/110488494/4ca93d37-619a-4874-a5b6-83d09033253e"> - 128
+
+<img width="1413" alt="Screen Shot 2024-04-09 at 4 48 59 AM" src="https://github.com/nemerjit/nmep-hw2/assets/110488494/d5d8699d-8062-4cae-afc1-85cccab80866"> - 512
+
+<img width="1410" alt="Screen Shot 2024-04-09 at 4 49 28 AM" src="https://github.com/nemerjit/nmep-hw2/assets/110488494/1abecbc6-536f-4ba1-916e-dd0976631636"> - 256
+
+<img width="1409" alt="Screen Shot 2024-04-09 at 4 50 04 AM" src="https://github.com/nemerjit/nmep-hw2/assets/110488494/85635ae8-7f1f-4736-92fb-ef77a8c2853e"> - 1024
+
+1024 batch size was clearly the slowest. The amount of time each epoch took had a one-to-one correlation with the size of the batch. The larger the size of the batch, the longer the epoch would take. Oddly enough, validation accuracy was pretty similar for 256, 512, and 1024. The rest were somewhat different in this regard.
+
+
 ## 5.4 As a followup to the previous question, we're going to explore the effect of batch size on _throughput_, which is the number of images/sec that our model can process. You can find this by taking the batch size and dividing by the time per epoch. Plot the throughput for batch sizes of powers of 2, i.e. 1, 2, 4, ..., until you reach CUDA OOM. What is the largest batch size you can support? What trends do you observe, and why might this be the case?
 You only need to observe the training for ~ 5 epochs to average out the noise in training times; don't train to completion for this question! We're only asking about the time taken. If you're curious for a more in-depth explanation, feel free to read [this intro](https://horace.io/brrr_intro.html). 
 
-`36384 was the batch size where Cuda OOM occurred. The largest batch size that worked was 18192. As batch size increases, throughput increases, which could be because we are using more memory, slowing down the process.`
+`36384 was the batch size where Cuda OOM occurred. The largest batch size that worked was 18192. As batch size increases, throughput increases, which could be because we are using more memory, slowing down the process. One trend that is noticable is as the batch size increases, time per epoch increases as well. Throughput also increases by orders of magnitude. While the time the epoch takes increases steadily as the batch size increase, there are points at which the throughput becomes ten times the previous throughput. Even at the end, just doubling the batch size 1.5x'd the throughput.`
 
 ## 5.5 Try different data augmentations. Take a look [here](https://pytorch.org/vision/stable/transforms.html) for torchvision augmentations. Try at least 2 new augmentation schemes. Record loss/accuracy curves and best accuracies on validation/train set.
 
-`YOUR ANSWER HERE`
+<img width="1442" alt="Screen Shot 2024-04-09 at 4 57 46 AM" src="https://github.com/nemerjit/nmep-hw2/assets/110488494/64f2b4ae-0d44-4b03-9cca-e4764b6874dd">
+
+`2 new augmentation schemes: vertical flip and random resized crop. The best accuracy is 55%.`
 
 ## 5.6 (optional) Play around with more hyperparameters. I recommend playing around with the optimizer (Adam, SGD, RMSProp, etc), learning rate scheduler (constant, StepLR, ReduceLROnPlateau, etc), weight decay, dropout, activation functions (ReLU, Leaky ReLU, GELU, Swish, etc), etc.
 
 `YOUR ANSWER HERE`
+
+I'm good chief.
 
 
 
@@ -381,6 +402,40 @@ You only need to observe the training for ~ 5 epochs to average out the noise in
 In `models/*`, we provided some skelly/guiding comments to implement ResNet. Implement it and train it on CIFAR10. Report training and validation curves, hyperparameters, best validation accuracy, and training time as compared to AlexNet. 
 
 `YOUR ANSWER HERE`
+Resnet Config: 
+AUG:
+  COLOR_JITTER: 0.4
+DATA:
+  BATCH_SIZE: 1024
+  DATASET: "cifar10"
+  IMG_SIZE: 32
+MODEL:
+  NAME: resnet18
+  NUM_CLASSES: 10
+  DROP_RATE: 0.0
+TRAIN:
+  EPOCHS: 10
+  WARMUP_EPOCHS: 0
+  LR: 3e-4
+  MIN_LR: 3e-5
+  WARMUP_LR: 3e-5
+  LR_SCHEDULER:
+    NAME: "cosine"
+  OPTIMIZER:
+    NAME: "adamw"
+    EPS: 1e-8
+    BETAS: (0.9, 0.999)
+    MOMENTUM: 0.9
+OUTPUT: "output/resnet18_cifar"
+SAVE_FREQ: 50 
+PRINT_FREQ: 500
+
+<img width="1438" alt="Screen Shot 2024-04-09 at 4 59 09 AM" src="https://github.com/nemerjit/nmep-hw2/assets/110488494/21dc933a-82e8-4650-933b-0806da9c9fc0">
+
+The training time appears to be similar to alexnet if not slightly less for this batch size. Resnet actually has a worse overall max accuracy score when accounting for epochs but overall has a better ending max accuracy score.
+
+
+
 
 ## 6.1 Visualize examples
 
