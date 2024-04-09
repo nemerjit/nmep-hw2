@@ -154,9 +154,7 @@ The implementation of LeNet has 11 layers (6 feature extracting layers, and 5 cl
 The following questions relate to `main.py`, and the configs in `configs/`.
 
 ## 3.0 What configs have we provided for you? What models and datasets do they train on?
-We’ve been provided the configurations for our data settings, model settings, image augmentation settings, testing settings, training and optimization settings, and checkpoint/logging settings. 
-
-These configs train on the resnet and lenet models. 
+The configs file contains the configurations for the models lenet and resnet18. The lenet model trains on the cifar10 dataset, and the resnet model trains on the cifar10 dataset,and the medium_imagenet dataset. 
 
 
 ## 3.1 Open `main.py` and go through `main()`. In bullet points, explain what the function does.
