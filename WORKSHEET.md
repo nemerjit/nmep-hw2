@@ -273,6 +273,55 @@ PRINT_FREQ: 500
 SAVE_FREQ: 5
 
 PRINT_FREQ: 99999
+--------------------------------------
+LeNet was straight doo doo. Max Accuracy of 40%.
+
+AUG:
+  COLOR_JITTER: 0.4
+  RAND_AUGMENT: rand-m9-mstd0.5-inc1
+BASE:
+- ''
+DATA:
+  BATCH_SIZE: 256
+  DATASET: cifar10
+  DATA_PATH: ' '
+  IMG_SIZE: 32
+  INTERPOLATION: bicubic
+  NUM_WORKERS: 32
+  PIN_MEMORY: true
+EVAL_MODE: false
+MODEL:
+  DROP_RATE: 0.0
+  NAME: lenet
+  NUM_CLASSES: 200
+  RESNET: {}
+  RESUME: ''
+OUTPUT: output/lenet
+PRINT_FREQ: 99999
+SAVE_FREQ: 5
+SEED: 0
+TEST:
+  CROP: true
+  SEQUENTIAL: false
+  SHUFFLE: false
+TRAIN:
+  ACCUMULATION_STEPS: 1
+  EPOCHS: 50
+  LR: 0.0003
+  LR_SCHEDULER:
+    NAME: cosine
+  MIN_LR: 3.0e-05
+  OPTIMIZER:
+    BETAS:
+    - 0.9
+    - 0.999
+    EPS: 1.0e-08
+    MOMENTUM: 0.9
+    NAME: adamw
+  START_EPOCH: 0
+  WARMUP_EPOCHS: 10
+  WARMUP_LR: 3.0e-05
+
 
 
 
@@ -291,7 +340,16 @@ PRINT_FREQ: 99999
 
 ## 5.1 Plot the training and validation accuracy and loss curves for AlexNet and LeNet. Attach the plot and any observations you have below.
 
-`YOUR ANSWER HERE`
+`Below is Lenet's validation and training accuracy. Despite going for more epochs, its worse than Alexnet. Additionally, it's training accuracy is unuasually low and its validation accuracy looks quite similar to its training accuracy.`
+
+<img width="1424" alt="Screen Shot 2024-04-09 at 4 38 25 AM" src="https://github.com/nemerjit/nmep-hw2/assets/110488494/5e279a26-4c55-424e-a15a-fb758c63d265">
+
+Below is AlexNet's training and validation accuracy.
+
+<img width="1409" alt="Screen Shot 2024-04-09 at 4 40 24 AM" src="https://github.com/nemerjit/nmep-hw2/assets/110488494/24506cbb-4142-4a0c-b465-0299659e89b1">
+
+AlexNet has a higher training and validation accuracy with far lower epochs. It looks like the validation and training accuracy is increasing at the end, meaning that if we had more epochs, the training and validation accuracy would likely increase. 
+
 
 ## 5.2 For just AlexNet, vary the learning rate by factors of 3ish or 10 (ie if it's 3e-4 also try 1e-4, 1e-3, 3e-3, etc) and plot all the loss plots on the same graph. What do you observe? What is the best learning rate? Try at least 4 different learning rates.
 
