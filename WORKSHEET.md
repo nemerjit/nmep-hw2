@@ -145,7 +145,7 @@ The LeNet and ResNet18 models have been implemented for us.
 PyTorch models inherit from the torch.nn.Module class. The functions needed to implement PyTorch models are: __init__() and forward(). 
 
 ## How many layers does our implementation of LeNet have? How many parameters does it have? (hint: to count the number of parameters, you might want to run the code)
-Our implementation of LeNet has 11 layers (6 feature extracting layers, and 5 classifier layers). 
+The implementation of LeNet has 11 layers (6 feature extracting layers, and 5 classifier layers). 
 
 
 
@@ -154,8 +154,10 @@ Our implementation of LeNet has 11 layers (6 feature extracting layers, and 5 cl
 The following questions relate to `main.py`, and the configs in `configs/`.
 
 ## 3.0 What configs have we provided for you? What models and datasets do they train on?
+We’ve been provided the configurations for our data settings, model settings, image augmentation settings, testing settings, training and optimization settings, and checkpoint/logging settings. 
 
-`YOUR ANSWER HERE`
+These configs train on the resnet and lenet models. 
+
 
 ## 3.1 Open `main.py` and go through `main()`. In bullet points, explain what the function does.
 
@@ -164,7 +166,7 @@ The following questions relate to `main.py`, and the configs in `configs/`.
 ## 3.2 Go through `validate()` and `evaluate()`. What do they do? How are they different? 
 > Could we have done better by reusing code? Yes. Yes we could have but we didn't... sorry...
 
-`YOUR ANSWER HERE`
+The validate() function evaluates the performance of the model (loss, accuracy) based on its performance with a validation dataset during training. The evaluate() function measures the performance of the model on new data, after the training period is complete. 
 
 
 # Part 4: AlexNet
